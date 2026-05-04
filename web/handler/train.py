@@ -77,7 +77,7 @@ def deploy(
 
     request.session["flash"] = {
         "type": "success",
-        "msg": "Model Deployed Successfully",
+        "msg": f"{file_name} Model Deployed Successfully",
     }
     return RedirectResponse("/", status_code=303)
 
