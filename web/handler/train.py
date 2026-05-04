@@ -74,7 +74,7 @@ def deploy(
 
     services.sagemaker_service.deploy_model(user.user_id, file_name, s3_model_path)
 
-    return {"Done"}
+    return RedirectResponse("/", status_code=303)
 
 
 @router.get("/{file_name}")
