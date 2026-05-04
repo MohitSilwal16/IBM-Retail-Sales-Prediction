@@ -57,7 +57,7 @@ def _cleanup_serving_containers() -> None:
     subprocess.run(["docker", "network", "rm", "sagemaker-local"], capture_output=True)
 
 
-@router.get("/deploy/{file_name}")
+@router.post("/deploy/{file_name}")
 def deploy(
     request: Request,
     file_name: str,
