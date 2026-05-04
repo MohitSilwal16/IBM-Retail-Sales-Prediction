@@ -67,13 +67,18 @@ def deploy(
     file_name_wo_ext = file_name.removesuffix(".csv")
     model = sql.get_model_by_user_and_file(user.user_id, file_name)
     if not model:
-        return {"No Model"}
+        request.session["flash"] = {"type": "error", "msg": "Model Not Found"}
+        return RedirectResponse("/", status_code=303)
 
     # s3://your-bucket/models/2/Formatted Car Sales/2-Formatted-Car-Sales-csv-2026-05-02-11-59-08-801/output/model.tar.gz
     s3_model_path = f"s3://{config.settings.S3_BUCKET_NAME}/models/{user.user_id}/{file_name_wo_ext}/{model.model_job_name}/output/model.tar.gz"
 
     services.sagemaker_service.deploy_model(user.user_id, file_name, s3_model_path)
 
+    request.session["flash"] = {
+        "type": "success",
+        "msg": "Model Deployed Successfully",
+    }
     return RedirectResponse("/", status_code=303)
 
 
