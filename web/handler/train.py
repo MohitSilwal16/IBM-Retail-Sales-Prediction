@@ -31,6 +31,12 @@ def train_model(
     )
     sql.create_model_metadata(user.user_id, file_name, job_name)
 
+    file_name_wo_ext = file_name.removesuffix(".csv")
+
+    # s3://your-bucket/models/2/Formatted Car Sales/2-Formatted-Car-Sales-csv-2026-05-02-11-59-08-801/output/model.tar.gz
+    s3_model_path = f"s3://{config.settings.S3_BUCKET_NAME}/models/{user.user_id}/{file_name_wo_ext}/{job_name}/output/model.tar.gz"
+    services.sagemaker_service.deploy_model(user.user_id, file_name, s3_model_path)
+
     request.session["flash"] = {
         "type": "success",
         "msg": f"Model Training Started with Job Name {job_name}",

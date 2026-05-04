@@ -7,5 +7,5 @@ dev:
 
 prod:
 	docker compose -f docker/prod/compose.prod.yaml down
-	docker compose -f docker/prod/compose.prod.yaml build --no-cache
+	docker compose -f docker/prod/compose.prod.yaml build
 	docker compose -f docker/prod/compose.prod.yaml up -d

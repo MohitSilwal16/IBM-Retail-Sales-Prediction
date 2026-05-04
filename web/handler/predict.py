@@ -62,6 +62,5 @@ async def predict(
         file_name,
         {"instances": [form_input]},
     )
-    print(predictions)
     total = sum(p["predicted_count"] for p in predictions)
     return JSONResponse({"prediction": total})
