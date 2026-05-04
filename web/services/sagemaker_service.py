@@ -105,9 +105,6 @@ def start_training_job(user_id: str, data_file_name: str) -> str:
     return estimator.latest_training_job.name
 
 
-# Constants to add
-
-
 def deploy_model(user_id: str, data_file_name: str, model_s3_path: str) -> str:
     data_file_name_wo_ext = data_file_name.split(".")[0]
     endpoint_name = f"{user_id}-{data_file_name_wo_ext}"
