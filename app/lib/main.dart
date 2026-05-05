@@ -24,7 +24,7 @@ class SimpleWebView extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..loadRequest(Uri.parse('http://10.0.2.2:8000'));
+      ..loadRequest(Uri.parse('https://ibm.hopto.org'));
 
     return Scaffold(
       body: SafeArea(child: WebViewWidget(controller: controller)),

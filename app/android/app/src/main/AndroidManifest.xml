@@ -11,7 +11,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <application
         android:usesCleartextTraffic="true"
-        android:label="Retail Sales Analytics"
+        android:label="IBM Retail Sales Prediction"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
