@@ -48,12 +48,20 @@ Client (Browser)
    Gunicorn (WSGI Server)
       │
       ▼
-   Flask App (Python)
+   FastAPI App (Python)
       ├── SQLAlchemy ──► AWS RDS (PostgreSQL)
       └── Boto3 Client ──► AWS S3 (model artifacts, uploaded files)
 ```
 
-In development, Flask's built-in server is used with hot-reload via Docker Compose watch mode. In production, Gunicorn serves the app behind Nginx. The public domain and SSL certificate were manually provisioned and are not part of this repository.
+In development, Fast API's built-in server is used with hot-reload via Docker Compose watch mode. In production, Gunicorn serves the app behind Nginx. The public domain and SSL certificate were manually provisioned and are not part of this repository.
+
+---
+
+### Mobile Application
+
+A **Flutter mobile app** wraps the web interface via a responsive WebView, providing a native
+mobile experience on Android and iOS without duplicating any frontend logic. The app simply
+loads the same FastAPI-served UI, with the WebView adapting to the device's screen size.
 
 ---
 
@@ -61,7 +69,7 @@ In development, Flask's built-in server is used with hot-reload via Docker Compo
 
 | Layer            | Technology                           |
 |------------------|--------------------------------------|
-| Web Framework    | Flask + Jinja2                       |
+| Web Framework    | Fast API + Jinja2                       |
 | Frontend         | Tailwind CSS                         |
 | ORM              | SQLAlchemy                           |
 | Object Storage   | AWS S3                               |
@@ -72,6 +80,7 @@ In development, Flask's built-in server is used with hot-reload via Docker Compo
 | Containerization | Docker + Docker Compose              |
 | ML Training      | AWS SageMaker (Local Mode)           |
 | Deployment       | AWS EC2                              |
+| Mobile App       | Flutter (Responsive WebView)         |
 
 ### Development vs Production Infrastructure
 
